@@ -57,9 +57,38 @@ console.log(nAn);
 
 
 // ---------------------------------------------------------------
-// 문자 입력할때 
+// string 문자 입력할때 
+const char = 'c';
+const fullname = 'ha eun jong';
+const greeting = 'hello' + fullname;
+console.log(`value: ${greeting}, type: ${typeof greeting}`);
+const helloBob = `hi ${fullname}!`;
+console.log(`value: ${helloBob}, type: ${typeof helloBob}`);
 
-// 식별자가 필요할때
+
+// ---------------------------------------------------------------
+// boolean 참 거짓 입력할 때
+const canread = true;
+const test = 3 < 1 ; // 거짓
+console.log(`value: ${canread}, type: ${typeof canread}`);
+console.log(`value: ${test}, type: ${typeof test}`);
+
+
+// ---------------------------------------------------------------
+// null 없는 값을 입력할 때
+let nothing = null;  // nothing은 비어있는 가지고 있지 않다
+console.log(`value: ${nothing}, type: ${typeof nothing}`);
+
+
+// ---------------------------------------------------------------
+// undefined 정의되지 않은 값을 입력할 때
+let x ; // 선언은 했지만 아무것도 정의되지 않았다.
+// let x = undefined ;  이랑 같은 말
+console.log(`value: ${x}, type: ${typeof x}`);
+
+
+// ---------------------------------------------------------------
+// symbol 식별자가 필요할때
 const symbol1 = Symbol('id');
 const symbol2 = Symbol('id');
 console.log(symbol1 === symbol2);
@@ -67,12 +96,28 @@ console.log(symbol1 === symbol2);
 const gsymbol1 = Symbol.for('id');
 const gsymbol2 = Symbol.for('id');
 console.log(gsymbol1 === gsymbol2);
-// console.log('')
 
-// 5. 다이나믹 타입
+// 심볼은 항상 .description을 넣어야 한다
+console.log(`value: ${symbol1.description}, type: ${typeof symbol1}`)
+
+// ---------------------------------------------------------------
+// 다이나믹 타입 -> 선언할 때 어떤 타입인지 선언하지 않고 프로그램이 동작할 때 할당된 값에 따라서 타입이 변경될 수 있음
+// 프로토 타입일 때는 유용하지만 협업할 때는 좋지않음!
+// 에러 발생이 높음 -> typescript가 나오게 되었다.
 let text = 'hello';
-console.log('value: ${text}, type: ${typeof text}');
+console.log(text.charAt(0));  //hello 에서 문자열 0번째 추출
+console.log(`value: ${text}, type: ${typeof text}`); // 문자로 출력된다
+text = 1;
+console.log(`value: ${text}, type: ${typeof text}`); // 숫자가 된다 
+text = '7' + 5;
+console.log(`value: ${text}, type: ${typeof text}`); // 문자가 된다.
+text = '8' / '2';
+console.log(`value: ${text}, type: ${typeof text}`); // 숫자가 된다 
+//console.log(text.charAt(0)); 여기서는 text가 숫자로 바뀌었기 때문에 에러가 난다
 
 
-// 6. 오브젝트 타입
-let jjong = {name}
+// ---------------------------------------------------------------
+// 오브젝트 타입
+// 오브젝트 자체는 변경이 불가능하지만 안에 있는 값은 변경가능하다
+let jjong = {name:'은종', age: 20};
+jjong.age = 21;
