@@ -62,6 +62,8 @@
   ];
   
   // Q5. find a student with the score 90
+  // 90 점 이상이 넘는 학생을 찾아줘
+
   // {
   //   const result = students.find(function(student, index){
   //     console.log(student, index);
@@ -76,33 +78,74 @@
   // }
 
   {
-      const result = students.find((student)=> student.score === 90);
-      console.log(result);
+    const result = students.find((student)=> student.score === 90);
+    console.log(result);
   }
 
   // Q6. make an array of enrolled students
+  // true 인 학생들만 골라서 배열을 만든다
   {
+    const result = students.filter((student)=>student.enrolled);
+    console.log(result);
   }
   
   // Q7. make an array containing only the students' scores
   // result should be: [45, 80, 90, 66, 88]
+  // 점수만 있는 새로운 배열
   {
+    console.clear();
+    const result = students.map((student)=>student.score);
+    console.log(result);
   }
   
   // Q8. check if there is a student with the score lower than 50
+  // 50점 보다 낮은 학생이 있는지 확인해봐
   {
+    const result = students.some((student)=> student.score<50);
+    console.log(result);
+    // 학생이 있다면
+
+    const result2 = students.every((student)=> student.score<50);
+    console.log(result2);
+    // 모든 학생이
   }
   
   // Q9. compute students' average score
-  {
-  }
+  // 점수 평균 구하기
+  // {
+  //   const result = students.reduce((prev, curr) => {
+  //     cconsole.log('------------');
+  //     cconsole.log(prev);
+  //     cconsole.log(curr);
+  //     return prev + curr.score;
+  //   }, 0);
+  //   console.log(result);
+  // }
+
+  console.clear();
+  const result = students.reduce((prev,curr)=>{
+      return prev + curr.score;
+    }, 0);
+    console.log(result / students.length);
   
   // Q10. make a string containing all the scores
   // result should be: '45, 80, 90, 66, 88'
+  // 학생들의 모든 점수를 string으로 만들기
+  // 여러가지 조건을 줄 때
   {
+    const result = students
+    .map((student)=> student.score)
+    .filter((score)=>score >= 50)
+    .join();
+    console.log(result);
   }
   
   // Bonus! do Q10 sorted in ascending order
   // result should be: '45, 66, 80, 88, 90'
   {
+    const result = students
+    .map((student)=> student.score)
+    .sort((a, b) => a - b)
+    .join();
+    console.log(result);
   }
